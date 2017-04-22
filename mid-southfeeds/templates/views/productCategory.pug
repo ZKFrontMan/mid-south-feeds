@@ -1,0 +1,9 @@
+extends ../layouts/default
+
+block content
+    each cat in productCategory.categories
+        p= cat.name
+
+    h1= productCategory.name
+
+    div !{productCategory.description}
