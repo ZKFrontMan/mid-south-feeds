@@ -1,3 +1,34 @@
 extends ../layouts/default
 
 block content
+    .container
+        ol.breadcrumb(style="margin-bottom: 0px; font-size: 14px;")
+            li: a(href="/" + product.categories[0].name)= product.categories[0].name
+            li: a(href="/" + product.categories[0].name + "/" + encodeURI(product.categories[1].name))= product.categories[1].name
+            li.active= product.name
+    .container.msf-card
+        .row
+            .col-md-12.col-sm-12
+                div(style="background-image: url(/images/uploads/" + product.productImage.filename + "); height: 250px; background-size: cover;")
+                    .msf-card(style="position: absolute; left: 55px; top: 155px;")
+                        img.img-responsive(src="/images/uploads/" + product.bagImage.filename)
+        .row
+            .col-md-2.col-sm-2
+                
+            .col-md-10.col-sm-10
+                h2= product.name
+        .row
+            .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
+                p= product.description
+        .row
+            .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2!= product.benefits
+        .row
+            .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
+                p GUARANTEED ANALYSIS
+                div!= product.guaranteedAnalysis
+        .row
+            .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
+                p INGREDIENT LIST
+                p= product.ingredientList
+        .row
+            .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2!= product.feedingDirections

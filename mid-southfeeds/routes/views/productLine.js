@@ -54,7 +54,7 @@ exports = module.exports = function (req, res) {
         if (locals.productLines.length) {
             async.eachOf(locals.productLines, getProducts, next);
         } else {
-            Product.model.find({ categories: locals.subcategory.id }, 'name key')
+            Product.model.find({ categories: locals.subcategory.id }, 'name key bagImage description')
                          .exec(function (err, products) {
                              locals.products = products;
                              next(err);
