@@ -23,14 +23,14 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'About Us', key: 'about-us', href: '/about-us' },
 		{ label: 'Contact Us', key: 'contact', href: '/contact' },
 		{ label: 'Dealer Locator', key: 'dealer-locator', href: '/dealer-locator' },
-		{ label: 'Equine', key: 'Equine', href: '/products/Equine' },
-		{ label: 'Pet', key: 'Pet', href: '/products/Pet' },
-		{ label: 'Cattle', key: 'Cattle', href: '/products/Cattle' },
-		{ label: 'Gamecock', key: 'Gamecock', href: '/products/Gamecock' },
-		{ label: 'Gamebird', key: 'Gamebird', href: '/products/Gamebird/gamebird' },
-		{ label: 'Poultry', key: 'Poultry', href: '/products/Poultry' },
-		{ label: 'Swine', key: 'Swine', href: '/products/Swine' },
-		{ label: 'Specialty', key: 'Specialty', href: '/products/Specialty' }
+		{ label: 'Equine', key: 'Equine', href: '/Equine' },
+		{ label: 'Pet', key: 'Pet', href: '/Pet' },
+		{ label: 'Cattle', key: 'Cattle', href: '/Cattle' },
+		{ label: 'Gamecock', key: 'Gamecock', href: '/Gamecock' },
+		{ label: 'Gamebird', key: 'Gamebird', href: '/Gamebird' },
+		{ label: 'Poultry', key: 'Poultry', href: '/Poultry' },
+		{ label: 'Swine', key: 'Swine', href: '/Swine' },
+		{ label: 'Specialty', key: 'Specialty', href: '/Specialty' }
 	];
 	res.locals.user = req.user;
 	next();

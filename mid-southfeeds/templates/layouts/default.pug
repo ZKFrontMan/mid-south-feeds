@@ -21,6 +21,7 @@ html
 		//- Customise the stylesheet for your site by editing /public/styles/site.less
 		//- All .less files will be automatically compiled and minified in production.
 		link(href="/styles/site.min.css", rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Roboto", rel="stylesheet")
 
 		//- This file provides the default styling for the KeystoneJS Content Editor
 		if user && user.canAccessKeystone
@@ -47,28 +48,20 @@ html
 
 			//- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
 			//- ... or completely change this header to suit your design.
-			div(role="navigation").navbar.navbar-default.navbar-fixed-top
-				.container
-					.navbar-header
-						.container.text-center
-							button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-								span.sr-only Toggle navigation
-								span.icon-bar
-								span.icon-bar
-								span.icon-bar
-							a(href='/')
-								img.logo-expanded(src="/images/logo@150.png")
-					.collapse.navbar-collapse
-						ul.nav.navbar-nav.navbar-left
-							each link in navLinks
-								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
-						ul.nav.navbar-nav.navbar-right
-							if user
-								if user.canAccessKeystone
-									li: a(href='/keystone') Open Keystone
-								li: a(href='/keystone/signout') Sign Out
-							else
-								li: a(href='/keystone/signin') Sign In
+			div(role="navigation").navbar.navbar-default
+				.navbar-header
+					.container.text-center
+						button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a(href='/')
+							img.logo-expanded(src="/images/logo@150.png")
+				.collapse.navbar-collapse
+					ul.nav.navbar-nav
+						each link in navLinks
+							li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 
 		//- BODY
 		#body
@@ -90,6 +83,7 @@ html
 
 		//- FOOTER
 		.container: #footer
+			.text-right(style="font-size: 14px;") © 2017 Mid-South Feeds, Inc. All Rights Reserved.
 
 
 		//- JAVASCRIPT

@@ -38,16 +38,10 @@ exports = module.exports = function (app) {
 	app.get('/about-us', routes.views.aboutUs);
 	app.all('/contact', routes.views.contact);
 	app.all('/dealer-locator', routes.views.dealerLocator);
-	app.get('/products/:category/:product?', routes.views.product);
-	//app.get('/pet', routes.views.pet);
-	//app.get('/cattle', routes.views.cattle);
-	//app.get('/gamecock', routes.views.gamecock);
-	//app.get('/gamebird', routes.views.gamebird);
-	//app.get('/poultry', routes.views.poultry);
-	//app.get('/swine', routes.views.swine);
-	//app.get('/specialty', routes.views.specialty);
+	app.get('/:category', routes.views.category);
+	app.get('/:category/:subcategory', routes.views.productLine);
+	app.get('/p/:category/:product', routes.views.product);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
-
 };

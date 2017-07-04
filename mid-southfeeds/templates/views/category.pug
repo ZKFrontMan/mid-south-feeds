@@ -1,0 +1,13 @@
+extends ../layouts/default
+
+block content
+    .container
+        .row
+            .col-md-12.col-sm-12: h1.page-header.text-center= category.label
+        .row
+            .col-md-12.col-sm-12!= category.description
+        .row
+            .navbar.navbar-default.navbar-subcat(role="navigation")
+                ul.nav.navbar-nav
+                    each subcat in category.categories
+                        li: a(href="/" + category.name + "/" + encodeURI(subcat.name))= subcat.name

@@ -12,7 +12,8 @@ ProductCategory.add({
 	name: { type: String },
 	isVisible: { type: Types.Boolean },
 	description: { type: Types.Html, wysiwyg: true },
-	categories: { type: Types.Relationship, ref: 'ProductCategory', many: true }
+	categories: { type: Types.Relationship, ref: 'ProductCategory', many: true },
+	label: { type: String }
 });
 
 ProductCategory.defaultColumns = 'name, categories';

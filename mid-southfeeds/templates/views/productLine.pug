@@ -1,0 +1,31 @@
+extends ../layouts/default
+
+block content
+    .container
+        .row
+            .col-md-12.col-sm-12: h1.page-header.text-center= subcategory.name
+        .row
+            .col-md-12.col-sm-12: div.text-center!= subcategory.description
+        .row
+            .navbar.navbar-default.navbar-subcat(role="navigation", style="margin-top: 15px; margin-bottom: 40px;")
+                ul.nav.navbar-nav
+                    each subcat in category.categories
+                        li(class=(subsection == subcat.name ? 'active' : null)): a(href="/" + category.name + "/" + encodeURI(subcat.name))= subcat.name
+        
+        if productLines.length
+            each productLine in productLines
+                .row.msf-card
+                    .col-md-2.col-sm-2: img.img-responsive(src="http://via.placeholder.com/100x225")
+                    .col-md-10.col-sm-10
+                        h3= productLine.name
+                        if productLine.products
+                            each product in productLine.products
+                                    span= product.name
+                        else
+                            span empty
+        else
+            each product in products
+                .row.msf-card
+                    .col-md-2.col-sm-2: img.img-responsive(src="http://via.placeholder.com/100x225")
+                    .col-md-10.col-sm-10
+                        h3= product.name

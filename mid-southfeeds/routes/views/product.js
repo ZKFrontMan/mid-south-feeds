@@ -1,5 +1,6 @@
 var keystone = require('keystone');
 var ProductCategory = keystone.list('ProductCategory');
+var Product = keystone.list('Product');
 
 exports = module.exports = function (req, res) {
 
@@ -7,29 +8,19 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	locals.section = req.params.category;
-    locals.productCategory = {};
-    locals.productSubcategories = [];
+    locals.productKey = req.params.product;
+    locals.product = {};
     
     view.on('init', function (next) {
-        ProductCategory.model.findOne({ name: locals.section })
-                             .populate('categories')
-                             .exec(function (err, category) {
-                                 locals.productCategory = category;
-                                 console.log(category);
-                                 next(err);
-                                //  ProductCategory.model.find({ $or: [{ name: 'Equine' }, { categories: category._id }] })
-                                //                       .limit(5)
-                                //                       .exec(function (err, categories) {
-                                //                           locals.productSubcategories = categories;
-                                //                           console.log(categories);
-                                                          
-                                //                       });
-                                 
-                             });
+        Product.model.findOne({ key: locals.productKey })
+                     .populate('categories')
+                     .exec(function (err, product) {
+                        locals.product = product;
+                        console.log(product);
+                        next(err);
+                     });
     });
 
-    
-
 	// Render the view
-	view.render('productCategory')
+	view.render('product')
 };

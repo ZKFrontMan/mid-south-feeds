@@ -10,8 +10,8 @@ var keystone = require('keystone');
 // and documentation.
 
 keystone.init({
-	'name': 'Mid-SouthFeeds',
-	'brand': 'Mid-SouthFeeds',
+	'name': 'Mid-South Feeds',
+	'brand': 'Mid-South Feeds',
 
 	'less': 'public',
 	'static': 'public',
