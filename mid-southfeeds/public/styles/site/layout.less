@@ -102,6 +102,14 @@ button.close {
 	margin-right: 10px;
 }
 
+.product-list {
+	columns: 2;
+	-webkit-columns: 2;
+	-moz-columns: 2;
+	list-style: none;
+	padding-left: 0px;
+}
+
 @media (min-width: 768px) {
     .navbar .navbar-nav {
         display: inline-block;
@@ -112,4 +120,16 @@ button.close {
     .navbar .navbar-collapse {
         text-align: center;
     }
+}
+
+@media (max-width: 768px) {
+	.product-list {
+		columns: 1;
+		-webkit-columns: 1;
+		-moz-columns: 1;
+	}
+
+	.row.msf-card {
+		text-align: center;
+	}
 }

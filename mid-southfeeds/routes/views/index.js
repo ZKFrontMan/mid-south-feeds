@@ -21,7 +21,7 @@ exports = module.exports = function (req, res) {
 	locals.categories = [];
 
 	view.on('init', function (next) {
-        ProductCategory.model.find()
+        ProductCategory.model.find({}, 'name label description categories')
                              .populate('categories')
 							 .where('isVisible', true)
                              .exec(function (err, categories) {
