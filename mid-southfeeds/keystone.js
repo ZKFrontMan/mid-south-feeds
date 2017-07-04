@@ -74,6 +74,10 @@ keystone.set('nav', {
 	products: ['Product', 'ProductCategory']
 });
 
+// Configure Google Maps API
+keystone.set('google api key', 'AIzaSyDi8EE_S_VkMqbS7Huz-iX_Yi8pMFCzWqU');
+keystone.set('google server api key', 'AIzaSyDi8EE_S_VkMqbS7Huz-iX_Yi8pMFCzWqU');
+
 // Start Keystone to connect to your database and initialise the web server
 
 keystone.start();
