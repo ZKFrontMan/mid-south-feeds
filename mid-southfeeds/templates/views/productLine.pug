@@ -16,7 +16,7 @@ block content
             each productLine in productLines
                 .container
                     .row.msf-card
-                        .col-md-2.col-sm-2: img.img-responsive(src="http://via.placeholder.com/100x225", style="margin: auto;")
+                        .col-md-2.col-sm-2: img.img-responsive(src="/images/uploads/" + productLine.bagImage.filename, style="margin: auto;")
                         .col-md-10.col-sm-10
                             h3= productLine.name
                             if productLine.products
@@ -28,6 +28,6 @@ block content
         else
             each product in products
                 .row.msf-card
-                    .col-md-2.col-sm-2: img.img-responsive(src="http://via.placeholder.com/100x225", style="margin: auto;")
+                    .col-md-2.col-sm-2: img.img-responsive(src="/images/uploads" + product.bagImage.filename, style="margin: auto;")
                     .col-md-10.col-sm-10
                         h3= product.name

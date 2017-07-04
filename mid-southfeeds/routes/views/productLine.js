@@ -41,7 +41,7 @@ exports = module.exports = function (req, res) {
     });
 
     view.on('init', function (next) {
-        ProductCategory.model.find({ categories: locals.subcategory.id }, 'name')
+        ProductCategory.model.find({ categories: locals.subcategory.id }, 'name bagImage')
                              .where('isVisible', false)
                              .exec(function (err, productLines) {
                                  locals.productLines = productLines;
