@@ -11,8 +11,8 @@ var Product = new keystone.List('Product', { drilldown: 'categories' });
 var storage = new keystone.Storage({
 	adapter: keystone.Storage.Adapters.FS,
 	fs: {
-		path: 'uploads',
-		publicPath: '/public/images/product/',
+		path: 'public/images/uploads',
+		publicPath: '/public/images/uploads/',
 	}
 });
 
@@ -25,6 +25,7 @@ Product.add({
     ingredientList: { type: Types.Textarea },
     feedingDirections: { type: Types.Html, wysiwyg: true },
     productImage: { type: Types.File, storage: storage },
+	bagImage: { type: Types.File, storage: storage },
 	categories: { type: Types.Relationship, ref: 'ProductCategory', many: true }
 });
 
