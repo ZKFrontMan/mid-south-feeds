@@ -11,8 +11,8 @@ var Product = new keystone.List('Product', { drilldown: 'categories' });
 var storage = new keystone.Storage({
 	adapter: keystone.Storage.Adapters.FS,
 	fs: {
-		path: 'uploads',
-		publicPath: '/public/images/product/',
+		path: 'public/images/uploads',
+		publicPath: '/public/images/uploads',
 	}
 });
 
