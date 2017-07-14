@@ -26,8 +26,12 @@ block content
                             span empty
         else
             each product in products
-                .row.msf-card
-                    .col-md-2.col-sm-2: img.img-responsive(src="/images/uploads/" + product.bagImage.filename, style="margin: auto; border: solid 1px;")
-                    .col-md-10.col-sm-10
-                        h3= product.name
-                        p= product.description
+                a(href="/p/" + category.name + "/" + product.key, style="color: inherit;")
+                    .row.msf-card
+                        if (product.bagImage.filename)
+                            .col-md-2.col-sm-2: img.img-responsive(src="/images/uploads/" + product.bagImage.filename, style="margin: auto; border: solid 1px;")
+                        else
+                            .col-md-2.col-sm-2
+                        .col-md-10.col-sm-10
+                            h3= product.name
+                            p= product.description

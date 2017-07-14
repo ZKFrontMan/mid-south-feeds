@@ -6,12 +6,20 @@ block content
             li: a(href="/" + product.categories[0].name)= product.categories[0].name
             li: a(href="/" + product.categories[0].name + "/" + encodeURI(product.categories[1].name))= product.categories[1].name
             li.active= product.name
-    .container.msf-card
+    .container.msf-card(style="padding-bottom: 75px;")
         .row
             .col-md-12.col-sm-12
-                div(style="background-image: url(/images/uploads/" + product.productImage.filename + "); height: 250px; background-size: cover;")
-                    .msf-card(style="position: absolute; left: 55px; top: 155px;")
-                        img.img-responsive(src="/images/uploads/" + product.bagImage.filename)
+                if (product.productImage.filename)
+                    div(style="background-image: url(/images/uploads/" + product.productImage.filename + "); height: 250px; background-size: cover;")
+                        if (product.bagImage.filename)
+                            .msf-card(style="position: absolute; left: 55px; top: 155px;")
+                                img.img-responsive(src="/images/uploads/" + product.bagImage.filename)
+                        
+                else
+                    div(style="height: 50px;")
+                    if (product.bagImage.filename)
+                        div: .msf-card(style="position: absolute; left: 55px; top: 55px;")
+                            img.img-responsive(src="/images/uploads/" + product.bagImage.filename)
         .row
             .col-md-2.col-sm-2
                 
@@ -21,14 +29,22 @@ block content
             .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
                 p= product.description
         .row
-            .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2!= product.benefits
+            if (product.benefits)
+                .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
+                    h4!=("THE BENEFITS OF <br>" + product.name.toUpperCase())
+                    div!= product.benefits
         .row
-            .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
-                p GUARANTEED ANALYSIS
-                div!= product.guaranteedAnalysis
+            if (product.guaranteedAnalysis)
+                .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
+                    h4 GUARANTEED ANALYSIS
+                    div!= product.guaranteedAnalysis
         .row
-            .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
-                p INGREDIENT LIST
-                p= product.ingredientList
+            if (product.ingredientList)
+                .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
+                    h4 INGREDIENT LIST
+                    p= product.ingredientList
         .row
-            .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2!= product.feedingDirections
+            if (product.feedingDirections)
+                .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
+                    h4 FEEDING DIRECTIONS
+                    div!= product.feedingDirections
