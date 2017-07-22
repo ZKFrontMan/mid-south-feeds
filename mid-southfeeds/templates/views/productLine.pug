@@ -14,16 +14,17 @@ block content
         
         if productLines.length
             each productLine in productLines
-                .row.msf-card
-                    .col-md-2.col-sm-2: img.img-responsive(src="/images/uploads/" + productLine.bagImage.filename, style="margin: auto; border: solid 1px;")
-                    .col-md-10.col-sm-10
-                        h3= productLine.name
-                        if productLine.products
+                if productLine.products.length
+                    .row.msf-card
+                        if (productLine.bagImage.filename)
+                            .col-md-2.col-sm-2: img.img-responsive(src="/images/uploads/" + productLine.bagImage.filename, style="margin: auto; border: solid 1px;")
+                        else
+                            .col-md-2.col-sm-2
+                        .col-md-10.col-sm-10
+                            h3= productLine.name
                             ul.product-list
                                 each product in productLine.products
                                     li: a(href="/p/" + category.name + "/" + product.key)= product.name
-                        else
-                            span empty
         else
             each product in products
                 a(href="/p/" + category.name + "/" + product.key, style="color: inherit;")

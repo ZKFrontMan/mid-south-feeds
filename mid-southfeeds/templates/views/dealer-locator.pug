@@ -1,5 +1,31 @@
 extends ../layouts/default
 
+block head
+	style(type="text/css").
+		#map {
+			height: 500px;
+		}
+
+block intro
+	.container
+		h1.page-header.text-center Dealer Locator
+
 block content
-	.container: .jumbotron
-		h1 Dealer Locator
+	form.form-inline#locator
+		.container
+			.row: .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+				input#action(type="hidden", name="action", value="getNearest")
+			.row
+				.col-sm-6.col-md-9.msf-card: #map
+				.col-sm-6.col-md-3(style="padding-top: 5px;")
+					div.text-center
+						.form-group
+							input#address(type="text", name="address", placeholder="Location", value="").form-control
+							input#lat(type="hidden", name="lat", value="")
+							input#lng(type="hidden", name="lng", value="")
+							button#submit.btn.btn-primary Find
+					div#results
+
+block js
+	script(src="/js/views/dealer-locator.js")
+	script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi8EE_S_VkMqbS7Huz-iX_Yi8pMFCzWqU&callback=initMap", aysnc, defer)
