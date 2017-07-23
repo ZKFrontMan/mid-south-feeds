@@ -9,7 +9,6 @@ exports = module.exports = function (req, res) {
 	locals.section = 'dealer-locator';
 
 	view.on('post', { action: 'getNearest' }, function (next) {
-		console.log(req.body);
 		var lat = req.body.lat;
 		var lng = req.body.lng;
 
@@ -18,7 +17,6 @@ exports = module.exports = function (req, res) {
 					.limit(5)
 					.exec(function (err, dealers) {
 						if (dealers && dealers.length > 0) {
-							console.log(dealers);
 							return res.json(dealers);
 						} else {
 							next(err);

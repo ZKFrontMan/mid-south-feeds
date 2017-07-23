@@ -14,7 +14,6 @@ exports = module.exports = function (req, res) {
                              .populate('categories')
                              .exec(function (err, category) {
                                  locals.category = category;
-                                 console.log(category);
                                  next(err);
                              });
     });

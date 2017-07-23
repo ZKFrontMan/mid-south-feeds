@@ -1,8 +1,5 @@
 var keystone = require('keystone');
 var ProductCategory = keystone.list('ProductCategory');
-var Product = keystone.list('Product');
-
-Product.model.find({}, 'name bagImage').exec(function (err, products) { console.log(products) });
 
 var transform2D = function (arr, count) {
 	var result = [];

@@ -45,7 +45,6 @@ exports = module.exports = function (req, res) {
                              .where('isVisible', false)
                              .exec(function (err, productLines) {
                                  locals.productLines = productLines;
-                                 console.log(productLines);
                                  next(err);
                              });
     });

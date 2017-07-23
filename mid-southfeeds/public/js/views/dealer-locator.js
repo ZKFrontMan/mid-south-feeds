@@ -1,3 +1,5 @@
+var resultMarkers = [];
+
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 8,
@@ -7,6 +9,7 @@ function initMap() {
 
     document.getElementById('locator').addEventListener('submit', function(e) {
         e.preventDefault();
+        clearMap();
         geocodeAddress(geocoder, map,
             function () {
                 $.post('/dealer-locator', serializeLocation()).done(function(dealers) {
@@ -15,10 +18,27 @@ function initMap() {
                         addMarker(map, dealer, i + 1);
                         addResultList(dealer, i + 1);
                     }
+                    map.fitBounds(getBounds());
                 });
             }
         );
     });
+}
+
+function clearMap() {
+    for (var i = 0; i < resultMarkers.length; i++) {
+        resultMarkers[i].setMap(null);
+    }
+    resultMarkers = [];
+    $('#results').html('');
+}
+
+function getBounds() {
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < resultMarkers.length; i++) {
+        bounds.extend(resultMarkers[i].getPosition());
+    }
+    return bounds;
 }
 
 function geocodeAddress(geocoder, resultsMap, next) {
@@ -60,6 +80,8 @@ function addMarker(map, dealer, label) {
     marker.addListener('click', function () {
         info.open(map, marker);
     });
+
+    resultMarkers.push(marker);
 }
 
 function addResultList(dealer, label) {
