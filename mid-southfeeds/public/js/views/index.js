@@ -10,7 +10,5 @@
 
         $('div.row.row-expand').show();
         $('div.msf-card.' + category).show();
-        
-        console.log(category);
     });
 })(jQuery);
