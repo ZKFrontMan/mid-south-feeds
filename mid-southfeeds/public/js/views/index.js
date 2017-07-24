@@ -1,6 +1,6 @@
 (function($) {
     $('button.close').off('click').on('click', function (e) {
-        $('div.row.row-expand').hide();
+        $('div.row.row-expand').slideUp(500);
     });
     
     $('div.thumbnail').off('click').on('click', function (e) {
@@ -10,5 +10,6 @@
 
         $('div.row.row-expand').show();
         $('div.msf-card.' + category).show();
+        $("html, body").animate({ scrollTop: $('.row-expand')[0].scrollHeight }, 500);
     });
 })(jQuery);
