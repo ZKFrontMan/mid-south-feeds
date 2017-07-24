@@ -9,6 +9,10 @@ var keystone = require('keystone');
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
+function setCacheControl(res) {
+	res.setHeader('Cache-Control', 'public, max-age=31536000');
+}
+
 keystone.init({
 	'name': 'Mid-South Feeds',
 	'brand': 'Mid-South Feeds',
@@ -19,7 +23,8 @@ keystone.init({
 	'views': 'templates/views',
 	'view engine': 'pug',
 
-	'static options': { maxAge: '1d' },
+	'static': 'public',
+	'static options': { maxAge: 31536000, setHeaders: setCacheControl },
 
 	'emails': 'templates/emails',
 
