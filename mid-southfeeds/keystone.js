@@ -19,6 +19,8 @@ keystone.init({
 	'views': 'templates/views',
 	'view engine': 'pug',
 
+	'static options': { maxAge: '1d' },
+
 	'emails': 'templates/emails',
 
 	'auto update': true,
