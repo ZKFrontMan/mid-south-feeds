@@ -1,0 +1,17 @@
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .print-none {
+        display: none;
+    }
+    .printable, .printable * {
+        visibility: visible;
+        page-break-inside: avoid;
+    }
+    .msf-card{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}

@@ -1,13 +1,21 @@
 extends ../layouts/default
 
+block css
+    link(href="/styles/product-print.css", rel="stylesheet")
+
 block content
     .container
-        ol.breadcrumb(style="margin-bottom: 0px; font-size: 14px;")
-            li: a(href="/" + product.categories[0].name)= product.categories[0].name
-            li: a(href="/" + product.categories[0].name + "/" + encodeURI(product.categories[1].name))= product.categories[1].name
-            li.active= product.name
-    .container.msf-card(style="padding-bottom: 75px;")
         .row
+            .col-md-10.col-sm-10
+                ol.breadcrumb(style="margin-bottom: 0px; font-size: 14px;")
+                    li: a(href="/" + product.categories[0].name)= product.categories[0].name
+                    li: a(href="/" + product.categories[0].name + "/" + encodeURI(product.categories[1].name))= product.categories[1].name
+                    li.active= product.name
+            .col-md-2.col-sm-2(style="text-align: right;")
+                button.btn.btn-xs(onClick="window.print()", style="margin-right: 10px;")
+                    span.glyphicon.glphyicon-print(aria-hidden="true") 
+    .container.msf-card(style="padding-bottom: 75px;")
+        .row.print-none
             .col-md-12.col-sm-12
                 if (product.productImage.filename)
                     div(style="background-image: url(/images/uploads/" + product.productImage.filename + "); height: 250px; background-size: cover;")
@@ -20,30 +28,30 @@ block content
                     if (product.bagImage.filename)
                         div: .msf-card(style="position: absolute; left: 55px; top: 55px;")
                             img.img-responsive(src="/images/uploads/" + product.bagImage.filename)
-        .row
+        .row.printable
             .col-md-2.col-sm-2
                 
             .col-md-10.col-sm-10
                 h2= product.name
-        .row
+        .row.printable
             .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
                 p= product.description
-        .row
+        .row.printable
             if (product.benefits)
                 .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
                     h4!=("THE BENEFITS OF <br>" + product.name.toUpperCase())
                     div!= product.benefits
-        .row
+        .row.printable
             if (product.guaranteedAnalysis)
                 .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
                     h4 GUARANTEED ANALYSIS
                     div!= product.guaranteedAnalysis
-        .row
+        .row.printable
             if (product.ingredientList)
                 .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
                     h4 INGREDIENT LIST
                     p= product.ingredientList
-        .row
+        .row.printable
             if (product.feedingDirections)
                 .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
                     h4 FEEDING DIRECTIONS
