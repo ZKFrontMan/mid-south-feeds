@@ -3,6 +3,12 @@ extends ../layouts/default
 block intro
 	.container
 		h1.page-header.text-center Contact Us
+		p.text-center 
+			| 403 South Market Street
+			br
+			| Alma, GA 31510
+			br
+			| Office: (912) 632-7603
 		
 block content
 	.container
@@ -10,7 +16,7 @@ block content
 			h3.text-center Thanks for getting in touch.
 		else
 			.row: .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
-				form(method='post')
+				form#contactForm(method='post')
 					input(type='hidden', name='action', value='contact')
 					.form-group(class=validationErrors.name ? 'has-error' : null)
 						label Name
@@ -20,7 +26,7 @@ block content
 						input(type='email', name='email', value=formData.email).form-control
 					.form-group
 						label Phone
-						input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
+						input(type='text', name='phone', value=formData.phone, placeholder='').form-control
 					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
 						label What are you contacting us about?
 						select(name='enquiryType').form-control
@@ -31,4 +37,8 @@ block content
 						label Message
 						textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
 					.form-actions.text-right
-						button(type='submit').btn.btn-primary Send
+						button.btn.btn-primary.g-recaptcha(data-sitekey="6LdxydoZAAAAALN9ziAWJx9P8dlUKYzw2bmcxdG0",data-callback="contactSubmit",data-action="submit") Send
+
+block js
+	script(src='https://www.google.com/recaptcha/api.js')
+	script(src="/js/views/contact.js")
