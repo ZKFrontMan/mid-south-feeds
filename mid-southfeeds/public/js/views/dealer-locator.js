@@ -43,15 +43,9 @@ function getBounds() {
 
 function geocodeAddress(geocoder, resultsMap, next) {
     var address = document.getElementById('address').value;
-<<<<<<< HEAD
     if (/^\d+$/.test(address)) {
         address += ", US";
     }
-=======
-	if(/^\d+$/.test(address)) {
-		address += ", US";
-	}
->>>>>>> 6d8ef6291969f79bf6321c5ff38225db0bd9eba1
     geocoder.geocode({ 'address': address }, function(results, status) {
         if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);
